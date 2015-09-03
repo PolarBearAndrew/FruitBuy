@@ -1,15 +1,23 @@
 extends layout
 
 block content
-  .ui.container
-    center(style="padding-top: 160px")
-      form.ui.form(style="max-width: 400px")
-        .ui.sizer.vertical.segment
-          .ui.huge.header 鮮•水果 會員登入
-        br
-        .field
-          input(type='text', name='first-name', placeholder='Email 信箱')
-        .field
-          input(type='text', name='last-name', placeholder='Password 密碼')
-        a.ui.button.red.inverted(href="/register") 註冊
-        button.ui.button.green(type='submit') 登入
+  .ui.container(style="padding-top: 160px")
+    center
+      .ui.two.column.middle.aligned.very.relaxed.stackable.grid
+        .column
+          .ui.form
+            .field(style="max-width:300px")
+              .ui.left.icon.input
+                input(type='text', placeholder='Email')
+                i.user.icon
+            .field(style="max-width:300px")
+              .ui.left.icon.input
+                input(type='password', placeholder='Password')
+                i.lock.icon
+            .ui.blue.submit.button 登入
+        .ui.vertical.divider
+          | 或是
+        .center.aligned.column
+          a.ui.big.green.labeled.icon.button(href="/register")
+            i.signup.icon
+            |       加入會員
