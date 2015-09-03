@@ -1,0 +1,80 @@
+doctype html
+html
+  head
+    title Fruit Buy
+
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+    link(rel='stylesheet', type='text/css', href='/semantic-ui/semantic.min.css')
+    link(rel='stylesheet', href='/asset/stylesheets/basic.css')
+    link(rel='stylesheet', href='/asset/stylesheets/menu-rwd.css')
+
+    script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+    script(src='/semantic-ui/semantic.min.js')
+  body
+    .ui.left.demo.vertical.inverted.sidebar.labeled.icon.menu
+      a(href="/home").item
+        i.home.icon
+        | 鮮•水果
+      a(href="/shop").item
+        i.block.apple.icon
+        | 水果霸台
+      a(href="/order").item
+        i.ordered.list.icon
+        | 訂單狀況
+      a(href="/cart").item
+        i.shop.icon
+        | 水果籃
+    .pusher
+      #navbar.ui.stackable.menu.container
+        a(href="/home").active.item 鮮•水果
+        a(href="/shop").item 水果霸台
+        .right.menu
+          a(href="/cart").item
+            i.shop.icon
+            | 水果籃
+          a(href="/order").item
+            i.file.text.outline.icon
+            | 訂單狀況
+          a(href="/login").ui.item 登入
+      #toggleMenu.ui.red.button
+        i.large.list.layout.icon
+      block content
+    //- RWD script
+    script(type='text/javascript').
+      $(document).ready(function() {
+        var
+        $headers     = $('body > h3'),
+        $header      = $headers.first(),
+        ignoreScroll = false,
+        timer;
+        // Preserve example in viewport when resizing browser
+        $(window)
+          .on('resize', function() {
+          // ignore callbacks from scroll change
+          clearTimeout(timer);
+          $headers.visibility('disable callbacks');
+          // preserve position
+          $(document).scrollTop( $header.offset().top );
+          // allow callbacks in 500ms
+          timer = setTimeout(function() {
+          $headers.visibility('enable callbacks');
+          }, 500);
+        });
+        $headers.visibility({
+            // fire once each time passed
+            once: false,
+            // dont refresh position on resize
+            checkOnRefresh: true,
+            // lock to this element on resize
+            onTopPassed: function() {
+            $header = $(this);
+            },
+            onTopPassedReverse: function() {
+            $header = $(this);
+          }
+        });
+        $('html,body').on('click', '#toggleMenu', function(){
+          console.log('click');
+          $('.ui.sidebar').sidebar('toggle');
+        });
+      });

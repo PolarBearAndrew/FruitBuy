@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .ui.container
+    center(style="padding-top: 160px")
+      form.ui.form(style="max-width: 400px")
+        .ui.sizer.vertical.segment
+          .ui.huge.header 鮮•水果 會員登入
+        br
+        .field
+          input(type='text', name='first-name', placeholder='Email 信箱')
+        .field
+          input(type='text', name='last-name', placeholder='Password 密碼')
+        a.ui.button.red.inverted(href="/register") 註冊
+        button.ui.button.green(type='submit') 登入

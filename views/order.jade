@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  //- 已下訂 ->  準備中 -> 已出貨 -> 已送達 -> 已吃掉
+  p.large 這邊應該放個廣告
+  h3.ui.center.aligned.header 鮮•水果 訂單狀況
+  .ui.last.container
+    .ui.four.steps
+      .step
+        .content
+          br
+          .title 鮮•訂單成功
+          .description
+            br
+            .ui.relaxed.divided.list
+              .item
+                i.large.checkmark.icon
+                .content
+                  p 空運冷藏日本富士山蘋果
+                  .description 15 份
+              .item
+                i.large.checkmark.icon
+                .content
+                  p 天然無添加蔬果汁(600ml)
+                  .description 30 份
+              .item
+                i.large.checkmark.icon
+                .content
+                  p 當季產地直送水果套裝
+                  .description 99 份
+
+      .active.step
+        .content
+          .title 鮮•準備中
+          br
+          .description 準備 鮮•水果 中，鮮•水果透過產地直送提供皆是 24hr 內的新鮮水果，讓您在水果最佳的保鮮期內品嚐。並透過現切的服務，為您處理好鮮•水果後直接送入您的口中。
+      .disabled.step
+        .content
+          .title 鮮•已經出貨
+          br
+          .description 鮮•水果正在前往您那的路途中，由專人為您配送，敬請耐心等候。
+      .disabled.step
+        .content
+          .title 品嚐鮮•水果
+          br
+          .description 鮮•水果正在前往您那的路途中，由專人為您配送，敬請耐心等候。
