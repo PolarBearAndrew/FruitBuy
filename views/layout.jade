@@ -13,7 +13,7 @@ html
   body
     .ui.left.demo.vertical.inverted.sidebar.labeled.icon.menu
       a(href="/home").item
-        i.home.icon
+        img.ui.image(src='asset/images/icon.png', height="60px", style="background-color:white; border-radius: 50%; margin-bottom:3px")
         | 鮮•水果
       a(href="/shop").item
         i.block.apple.icon
@@ -24,9 +24,14 @@ html
       a(href="/cart").item
         i.shop.icon
         | 水果籃
+      a(href="/login").item
+        i.icon.user
+        | 登入
     .pusher
       #navbar.ui.stackable.menu.container.rwd-sm-hide
-        a(href="/home").active.item 鮮•水果
+        a(href="/home", style="padding-left:60px").active.item
+          img.ui.image(src='asset/images/icon.png', height="70px", style="position:absolute; top:-12px; left:-20px")
+          | 鮮•水果
         a(href="/shop").item 水果霸台
         .right.menu
           a(href="/cart").item

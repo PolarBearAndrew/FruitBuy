@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  .ui.container(style="padding-top: 160px")
+  .ui.container(style="padding-top: 160px; min-height: 460px")
     center
       .ui.two.column.middle.aligned.very.relaxed.stackable.grid
         .column
@@ -15,7 +15,7 @@ block content
                 input(type='password', placeholder='Password')
                 i.lock.icon
             .ui.blue.submit.button 登入
-        .ui.vertical.divider
+        //- .ui.vertical.divider
           | 或是
         .center.aligned.column
           a.ui.big.green.labeled.icon.button(href="/register")
