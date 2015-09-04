@@ -6,4 +6,16 @@
   #navbar{
     display: none
   }
+
+  .detail-content{
+    padding-top: 40px
+  }
+
+  .rwd-sm-show{
+    display: block;
+  }
+
+  .rwd-sm-hide{
+    display: none;
+  }
 }

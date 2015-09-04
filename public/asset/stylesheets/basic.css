@@ -82,3 +82,13 @@ body {
   width: 60px;
   margin-left: -10px;
 }
+
+/* line 17, ../sass/basic.sass */
+.rwd-sm-show {
+  display: none;
+}
+
+/* line 20, ../sass/basic.sass */
+.rwd-sm-hide {
+  display: block;
+}

@@ -25,7 +25,7 @@ html
         i.shop.icon
         | 水果籃
     .pusher
-      #navbar.ui.stackable.menu.container
+      #navbar.ui.stackable.menu.container.rwd-sm-hide
         a(href="/home").active.item 鮮•水果
         a(href="/shop").item 水果霸台
         .right.menu
@@ -36,9 +36,10 @@ html
             i.file.text.outline.icon
             | 訂單狀況
           a(href="/login").ui.item 登入
-      #toggleMenu.ui.red.button
+      #toggleMenu.ui.red.button.rwd-sm-show
         i.large.list.layout.icon
       block content
+      include footer
     //- RWD script
     script(type='text/javascript').
       $(document).ready(function() {

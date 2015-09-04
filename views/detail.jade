@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  .ui.container
+    br
+    .ui.relaxed.divided.items
+      .item
+        .ui.image
+          .ui.one.cards.stackable
+            .ui.card.red
+              .image
+                img(src='asset/images/wireframe/demo-apple.jpg')
+        .content
+          a.header.huge.detail-content 空運冷藏日本富士山蘋果
+          .meta
+              span.date NT$ 35.00 / 份
+            .description
+              br
+              | 富士蘋果的特點是體積很大，遍體通紅，形狀很圓，平均大小如棒球一般。果實的重量中，有 9－11% 是單糖，而且其果肉緊密，比其他很多蘋果變種都要甜美和清脆，因此受到全世界消費者的廣泛喜愛。富士蘋果與其他蘋果相比有更長的最佳食用日期，甚至無需放入冰箱保存。室溫下可保存4個月，如果放入冰箱，富士蘋果可保存 5 到 7 個月
+              br
+              br
+              | 空運加上冷藏配送的日本富士山蘋果，不論品質、新鮮度皆是在最完美的情況下送達。為了保持鮮甜僅提供清洗的服務，避免切片影響完美品質！
+          .extra.content
+            a.ui.button.red(style="float:right")
+              i.add.to.cart.icon
+              | 放入水果籃
+  .ui.container
+    .rwd-sm-show
+      br
+      center more photo
+      hr
+    br
+    .ui.six.cards.stackable
+      - for( var i = 0; i < 4; i++)
+        .ui.card.red
+          .image
+            img(src='asset/images/wireframe/demo-apple.jpg')
+  .ui.container
+    button.ui.button.green(style="float:right", onclick="history.go(-1)")
+      i.reply.icon
+      | 回到水果霸台

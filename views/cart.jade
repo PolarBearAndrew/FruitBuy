@@ -13,7 +13,7 @@ block content
           .image
             img(src='asset/images/wireframe/demo-apple.jpg')
           .content
-            a.header 空運冷藏日本富士山蘋果
+            a.header(href="/detail?item=123") 空運冷藏日本富士山蘋果
             .meta
               span.date NT$ 35.00 / 份
             .description
@@ -23,4 +23,25 @@ block content
             button.ui.labeled.button.red
               | 數量(份)
             input(type='number', min='0', style="width:90px", value="10" )
+  .ui.container
+    br
+    hr
+    br
+    .ui.segment
+      .ui.form
+        .two.fields
+          .field
+            .ui.left.action.input
+              button.ui.button.orange.inverted
+                i.dollar.icon
+                | 總金額
+              input(type='number', min='0', value="750" )
+          .field
+            .ui.left.action.input
+              button.ui.button.orange.inverted
+                i.dollar.icon
+                | 送貨地址
+              input(type='text', min='0', placeholder="送到哪裡呢?" )
+        .ui.submit.button.green(style="width:100%") 確定送出
+
 
