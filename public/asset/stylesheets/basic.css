@@ -92,3 +92,17 @@ body {
 .rwd-sm-hide {
   display: block;
 }
+
+/* line 23, ../sass/basic.sass */
+#imgSlide {
+  background-position: center top;
+  background-repeat: no-repeat;
+  min-height: 420px;
+  max-height: 520px;
+  border: 0px solid red;
+}
+
+/* line 30, ../sass/basic.sass */
+#imgSlideBox {
+  border: 0px solid red;
+}

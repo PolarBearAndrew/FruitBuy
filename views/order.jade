@@ -2,7 +2,12 @@ extends layout
 
 block content
   //- 已下訂 ->  準備中 -> 已出貨 -> 已送達 -> 已吃掉
-  p.large 這邊應該放個廣告
+  .ui.container
+    .rwd-sm-show
+        br
+        br
+      a#imgSlideBox.ui.fluid.image(href='/shop')
+        img#imgSlide(style="background-image:url('/asset/images/wireframe/demo-slide.jpg')")
   h3.ui.center.aligned.header 鮮•水果 訂單狀況
   .ui.last.container
     .ui.four.steps
