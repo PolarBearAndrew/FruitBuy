@@ -1,4 +1,26 @@
 extends layout
 
 block content
-  p cart
+  .ui.last.container
+    .ui.three.cards.stackable
+      - for( var i = 0; i < 2; i++ )
+        .ui.card
+          .content
+            .right.floated.meta
+              a
+                i.remove.circle.outline.icon
+            | 您選購的鮮•水果
+          .image
+            img(src='asset/images/wireframe/demo-apple.jpg')
+          .content
+            a.header 空運冷藏日本富士山蘋果
+            .meta
+              span.date NT$ 35.00 / 份
+            .description
+              | 空運加上冷藏配送的日本富士山蘋果，不論品質、新鮮度皆是在最完美的情況下送達。為了保持鮮甜僅提供清洗的服務，避免切片影響完美品質！
+          .extra.content
+          .ui.left.action.input.right
+            button.ui.labeled.button.red
+              | 數量(份)
+            input(type='number', min='0', style="width:90px", value="10" )
+
