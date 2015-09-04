@@ -3,13 +3,22 @@ html
   head
     title Fruit Buy
 
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
-    link(rel='stylesheet', type='text/css', href='/semantic-ui/semantic.min.css')
     link(rel='stylesheet', href='/asset/stylesheets/basic.css')
     link(rel='stylesheet', href='/asset/stylesheets/menu-rwd.css')
 
+    //- link(rel='stylesheet', type='text/css', href='/semantic-ui/semantic.min.css')
+    link(rel='stylesheet', type='text/css', href='/semantic-ui/semantic.css')
+
     script(src='https://code.jquery.com/jquery-2.1.4.min.js')
-    script(src='/semantic-ui/semantic.min.js')
+
+    //- script(src='/semantic-ui/semantic.min.js')
+    script(src='/semantic-ui/semantic.js')
+
     script(src="/asset/javascripts/imgSlide.js")
   body
     .ui.left.demo.vertical.inverted.sidebar.labeled.icon.menu
@@ -18,7 +27,7 @@ html
         | 鮮•水果
       a(href="/shop").item
         i.block.apple.icon
-        | 水果霸台
+        | 水果巴台
       a(href="/order").item
         i.ordered.list.icon
         | 訂單狀況
@@ -33,7 +42,7 @@ html
         a(href="/home", style="padding-left:60px").active.item
           img.ui.image(src='asset/images/icon.png', height="70px", style="position:absolute; top:-12px; left:-20px")
           | 鮮•水果
-        a(href="/shop").item 水果霸台
+        a(href="/shop").item 水果巴台
         .right.menu
           a(href="/cart").item
             i.shop.icon
@@ -49,39 +58,40 @@ html
     //- RWD script
     script(type='text/javascript').
       $(document).ready(function() {
-        var
-        $headers     = $('body > h3'),
-        $header      = $headers.first(),
-        ignoreScroll = false,
-        timer;
-        // Preserve example in viewport when resizing browser
-        $(window)
-          .on('resize', function() {
-          // ignore callbacks from scroll change
-          clearTimeout(timer);
-          $headers.visibility('disable callbacks');
-          // preserve position
-          $(document).scrollTop( $header.offset().top );
-          // allow callbacks in 500ms
-          timer = setTimeout(function() {
-          $headers.visibility('enable callbacks');
-          }, 500);
-        });
-        $headers.visibility({
-            // fire once each time passed
-            once: false,
-            // dont refresh position on resize
-            checkOnRefresh: true,
-            // lock to this element on resize
-            onTopPassed: function() {
-            $header = $(this);
-            },
-            onTopPassedReverse: function() {
-            $header = $(this);
-          }
-        });
-        $('html,body').on('click', '#toggleMenu', function(){
+        //- var
+        //- $headers     = $('body > h3'),
+        //- $header      = $headers.first(),
+        //- ignoreScroll = false,
+        //- timer;
+        //- // Preserve example in viewport when resizing browser
+        //- $(window)
+        //-   .on('resize', function() {
+        //-   // ignore callbacks from scroll change
+        //-   clearTimeout(timer);
+        //-   $headers.visibility('disable callbacks');
+        //-   // preserve position
+        //-   $(document).scrollTop( $header.offset().top );
+        //-   // allow callbacks in 500ms
+        //-   timer = setTimeout(function() {
+        //-   $headers.visibility('enable callbacks');
+        //-   }, 500);
+        //- });
+        //- $headers.visibility({
+        //-     // fire once each time passed
+        //-     once: false,
+        //-     // dont refresh position on resize
+        //-     checkOnRefresh: true,
+        //-     // lock to this element on resize
+        //-     onTopPassed: function() {
+        //-     $header = $(this);
+        //-     },
+        //-     onTopPassedReverse: function() {
+        //-     $header = $(this);
+        //-   }
+        //- });
+        $('html,body').on('click touch', '#toggleMenu', function(){
           console.log('click');
           $('.ui.sidebar').sidebar('toggle');
         });
       });
+
