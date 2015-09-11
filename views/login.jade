@@ -14,10 +14,19 @@ block content
               .ui.left.icon.input
                 input(type='password', placeholder='Password')
                 i.lock.icon
-            .ui.blue.submit.button 登入
+            #login.ui.blue.submit.button 登入
         //- .ui.vertical.divider
           | 或是
         .center.aligned.column
           a.ui.big.green.labeled.icon.button(href="/register")
             i.signup.icon
             |       加入會員
+
+  //- dialog
+  #loginFail.ui.modal
+    .header.ui.red 登入失敗
+    .content
+      p 帳號或密碼錯誤，請重新輸入
+    include footer
+
+  script(src='/asset/javascripts/login.js')
