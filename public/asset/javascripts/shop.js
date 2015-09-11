@@ -1,8 +1,8 @@
 $(document).ready( function(){
 
-  $('html, body').on('click', '#login', function(){
+  $('html, body').on('click', '.add2cart', function(){
 
-    $('#loginFail').modal('show');
+    $('#add2cart').modal('show');
     return false;
   }); // #login click end
 

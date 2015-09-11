@@ -42,6 +42,13 @@ block content
                 i.dollar.icon
                 | 送貨地址
               input(type='text', min='0', placeholder="送到哪裡呢?" )
-        .ui.submit.button.green(style="width:100%") 確定送出
+        .checkout.ui.submit.button.green(style="width:100%") 確定送出
 
+  //- dialog
+  #checkout.ui.modal
+    .header 訂單送出成功
+    .content
+      a.ui.button.blue(href="/order") 查看訂單狀況
+    include footer
 
+  script(src='/asset/javascripts/cart.js')

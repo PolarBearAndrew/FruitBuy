@@ -1,8 +1,8 @@
 $(document).ready( function(){
 
-  $('html, body').on('click', '#login', function(){
+  $('html, body').on('click', '.checkout', function(){
 
-    $('#loginFail').modal('show');
+    $('#checkout').modal('show');
     return false;
   }); // #login click end
 
