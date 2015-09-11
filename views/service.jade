@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  .ui.container
+    .rwd-sm-show
+      br
+      br
+    a#imgSlideBox.ui.fluid.image(href='/shop')
+      img#imgSlide(style="background-image:url('/asset/images/wireframe/demo-slide.jpg')")
+    .ui.relaxed.divided.items
+      .item
+        .ui.large.image
+          img(src='/asset/images/wireframe/demo-image.png')
+        .content
+          a.header Content Header
+          .meta
+            a Date
+            a Category
+          .description
+            | A description which may flow for several lines and give context to the content.
+          //- .extra
+          //-   img.ui.circular.avatar.image(src='/asset/images/wireframe/square-demo-image.png')
+          //-   |  Username
+      .item
+        .ui.large.image
+          img(src='/asset/images/wireframe/demo-image.png')
+        .content
+          a(href="").header Content Header
+          .meta
+            a Date
+            a Category
+          .description
+            | A description which may flow for several lines and give context to the content.
+      .item
+        .content
+          .ui.left.icon.input
+            input(type='text', placeholder='聯絡方式')
+            i.phone.icon
+          br
+          br
+          .ui.form
+            .field
+              textarea(placeholder='意見與回饋')
+          br
+          center
+            a.sendMail.ui.button.green 送出
+
+            //- .ui.right.floated.primary.button
+            //-   | Primary
+            //-   i.right.chevron.icon
+  //- dialog
+  #sendMail.ui.modal
+    .header.ui.green 客服信件已送出
+    .content
+      p 客服信件已經送出，謝謝您的反應與回饋。
+    include footer
+
+  script(src='/asset/javascripts/service.js')
