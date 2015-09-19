@@ -17,18 +17,20 @@ let check = checkPorperty.check;
 router.get('/', (req, res, next) => {
     let schema = [], data = [];
     schema = [
-      { title: '姓名', ctrl: 'text', schema: 'time' },
-      { title: 'Email', ctrl: 'text', schema: 'userId' },
-      { title: '密碼', ctrl: 'text', schema: 'buy' },
-      { title: '手機號碼', ctrl: 'text', schema: 'address' }
+      { title: '訂單時間', ctrl: 'text', schema: 'time' },
+      { title: '訂購帳號', ctrl: 'text', schema: 'userId' },
+      { title: '購買項目', ctrl: 'text', schema: 'buy' },
+      { title: '送貨地址', ctrl: 'text', schema: 'address' },
+      { title: '總金額', ctrl: 'text', schema: 'cost' }
     ];
 
     let initCustomer = [{
       _id: '0',
-      name: '系統精靈 使用者',
-      email: 'chenpoanandrew@gmail.com',
-      pwd: '123',
-      phone: '0930014167',
+      time: '20130920',
+      userId: 'AndrewChen',
+      buy: '無資料',
+      address: '新生南物一段123',
+      cost: '999',
     }]
 
 
@@ -41,10 +43,11 @@ router.get('/', (req, res, next) => {
           result = result.map( val => {
 
             let tmp = [];
-            tmp.push(val.name);
-            tmp.push(val.pwd);
-            tmp.push(val.email);
-            tmp.push(val.phone);
+            tmp.push(val.time);
+            tmp.push(val.userId);
+            tmp.push(val.buy);
+            tmp.push(val.address);
+            tmp.push(val.cost);
             tmp.push(val._id.toString());
 
             return tmp;
