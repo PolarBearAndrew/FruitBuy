@@ -9,6 +9,7 @@ var app          = express();
 var routes       = require('./routes/index');
 
 var em       = require('./routes/em');
+var img      = require('./routes/img');
 var user     = require('./routes/user');
 
 // view engine setup
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 app.use('/em', em);
+app.use('/img', img);
 app.use('/user', user);
 
 // catch 404 and forward to error handler
