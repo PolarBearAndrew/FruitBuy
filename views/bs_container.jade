@@ -10,15 +10,13 @@ html
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='/asset/stylesheets/basic.css')
     link(rel='stylesheet', href='/asset/stylesheets/menu-rwd.css')
-
-    //- link(rel='stylesheet', type='text/css', href='/semantic-ui/semantic.min.css')
     link(rel='stylesheet', type='text/css', href='/semantic-ui/semantic.css')
 
-    script(src='https://code.jquery.com/jquery-2.1.4.min.js')
 
-    //- script(src='/semantic-ui/semantic.min.js')
+    script(src='https://code.jquery.com/jquery-2.1.4.min.js')
     script(src='/semantic-ui/semantic.js')
 
+    scirpt(src='/assets/javascripts/config.js')
     script(src="/asset/javascripts/imgSlide.js")
   body
     #navbar.ui.stackable.menu.container.rwd-sm-hide
@@ -53,7 +51,7 @@ html
             a.item Home
 
 
-      block content
-      br
-      br
+    block content
+    br
+    br
     include footer

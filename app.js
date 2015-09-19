@@ -35,9 +35,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/img', img);
 
-app.use('/', routes);
-app.use('/em', em);
 app.use('/user', user);
+app.use('/em', em);
+
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

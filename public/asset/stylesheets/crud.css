@@ -1,0 +1,17 @@
+/* line 1, ../sass/crud.sass */
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 0.6em;
+}
+
+/* line 6, ../sass/crud.sass */
+.ctrl-table {
+  float: right;
+  margin-right: 4px;
+}
+
+/* line 11, ../sass/crud.sass */
+.ctrl {
+  margin-right: 4px;
+}

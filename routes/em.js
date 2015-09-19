@@ -14,6 +14,48 @@ let check = checkPorperty.check;
 
 //=======================================================
 
+router.get('/', (req, res, next) => {
+    let schema = [], data = [];
+    schema = [
+      { title: '帳號', ctrl: 'text', schema: 'account' },
+      { title: '密碼', ctrl: 'text', schema: 'pwd' },
+      { title: '權限/身份', ctrl: 'auth', schema: 'auth' }
+    ];
+
+    let initCustomer = [{
+      _id: '0',
+      account: '系統初始化管理遠',
+      pwd: '123',
+      auth: '無效帳號'
+    }]
+
+
+     Em.find()
+       .sort({ auth: 1 })
+       .execAsync()
+       .then( result => {
+          if(result.length === 0) result = initCustomer;
+
+          result = result.map( val => {
+
+            let tmp = [];
+            tmp.push(val.account);
+            tmp.push(val.pwd);
+            tmp.push(val.auth);
+            tmp.push(val._id.toString());
+
+            return tmp;
+          });
+
+          res.render('bs_crud', { schema: schema, data: result, apiUrl: 'em' });
+          debug('載入經 em 料成功', result);
+        })
+        .catch( err => {
+          debug('載入經 em 料失敗', err);
+          next(err);
+        });
+})
+
 /*
  * [POST] 新增em
  * request : no
