@@ -16,7 +16,7 @@ var Order = new mongoose.Schema({
     buy: {
         type: Array
     },
-    Address: {
+    address: {
         type: String
     },
     cost: {
