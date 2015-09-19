@@ -9,6 +9,7 @@ var app          = express();
 var routes       = require('./routes/index');
 
 var em       = require('./routes/em');
+var user     = require('./routes/user');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,7 +33,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+
 app.use('/em', em);
+app.use('/user', user);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
