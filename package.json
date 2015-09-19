@@ -17,6 +17,7 @@
     "jade": "~1.9.1",
     "map-stream": "0.0.6",
     "morgan": "~1.5.1",
+    "multer": "^0.1.6",
     "request": "^2.60.0",
     "require-dot-file": "^0.4.0",
     "serve-favicon": "~2.2.0",
