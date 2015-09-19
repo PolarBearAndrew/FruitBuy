@@ -14,6 +14,51 @@ let check = checkPorperty.check;
 
 //=======================================================
 
+router.get('/', (req, res, next) => {
+    let schema = [], data = [];
+    schema = [
+      { title: '姓名', ctrl: 'text', schema: 'name' },
+      { title: 'Email', ctrl: 'text', schema: 'email' },
+      { title: '密碼', ctrl: 'text', schema: 'pwd' },
+      { title: '手機號碼', ctrl: 'text', schema: 'phone' }
+    ];
+
+    let initCustomer = [{
+      _id: '0',
+      name: '系統精靈 使用者',
+      email: 'chenpoanandrew@gmail.com',
+      pwd: '123',
+      phone: '0930014167',
+    }]
+
+
+       User.find()
+           .sort({ email: 1 })
+           .execAsync()
+           .then( result => {
+              if(result.length === 0) result = initCustomer;
+
+              result = result.map( val => {
+
+                let tmp = [];
+                tmp.push(val.name);
+                tmp.push(val.pwd);
+                tmp.push(val.email);
+                tmp.push(val.phone);
+                tmp.push(val._id.toString());
+
+                return tmp;
+              });
+
+              res.render('bs_crud', { schema: schema, data: result, apiUrl: 'user' });
+              debug('載入經 em 料成功', result);
+            })
+            .catch( err => {
+              debug('載入經 em 料失敗', err);
+              next(err);
+            });
+})
+
 /*
  * [POST] 新增 User
  * request : no

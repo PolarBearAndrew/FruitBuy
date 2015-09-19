@@ -24,7 +24,7 @@ router.get('/', (req, res, next) => {
 
     let initCustomer = [{
       _id: '0',
-      account: '系統初始化管理遠',
+      account: '系統精靈 管理員',
       pwd: '123',
       auth: '無效帳號'
     }]
