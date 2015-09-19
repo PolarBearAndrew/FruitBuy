@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var multer = require('multer');
-
+var done = false;
 
 //- set multer
 router.use(multer({
@@ -19,6 +19,9 @@ router.use(multer({
 }));
 
 router.post('/new', function(req, res) {
+
+    console.log('upload img');
+
     if (done == true) {
         console.log(req.files);
         console.log(req.files.userPhoto.path);
