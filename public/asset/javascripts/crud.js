@@ -9,7 +9,8 @@ $(document).ready(function() {
   // edit tables=======================
   var apiUrl = url + $('#api').text() + '/'
 
-  var auth = ['員工', '主管']
+  var auth = ['員工', '主管'];
+  var status = ['上架', '下架'];
 
   $('html, body').on('click', '.edit', function(){
 
@@ -96,6 +97,10 @@ $(document).ready(function() {
         show = buildSelector( auth, value )
         break;
 
+      case 'status':
+        show = buildSelector( status, value )
+        break;
+
       case 'num':
         show = '<input type="number" class="form-control"  value="' + value + '" >';
         break;
@@ -118,6 +123,10 @@ $(document).ready(function() {
         break;
 
       case 'auth':
+        show = $(obj).children('select').val();
+        break;
+
+      case 'status':
         show = $(obj).children('select').val();
         break;
 
