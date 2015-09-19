@@ -11,6 +11,7 @@ var routes       = require('./routes/index');
 var em       = require('./routes/em');
 var img      = require('./routes/img');
 var user     = require('./routes/user');
+var product  = require('./routes/product');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/img', img);
 
+app.use('/product', product);
 app.use('/user', user);
 app.use('/em', em);
 
