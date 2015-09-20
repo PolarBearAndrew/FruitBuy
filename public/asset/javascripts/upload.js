@@ -6,10 +6,11 @@ $(document).ready(function() {
         $(this).ajaxSubmit({
             error: function(xhr) {
                 status('Error: ' + xhr.status);
+                return false;
             },
             success: function(response) {
                 console.log(response);
-                $('#show').attr('src', response.path)
+                // $('#show').attr('src', response.path)
                 return false;
             }
         });

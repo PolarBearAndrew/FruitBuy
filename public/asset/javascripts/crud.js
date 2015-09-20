@@ -108,6 +108,10 @@ $(document).ready(function() {
       case 'text':
         show = '<input class="form-control" type="text" value="' + value + '"></input>'
         break;
+
+      case 'img':
+        show = '<form id="uploadForm" enctype="multipart/form-data" action="/img/new" method="post"> <input type="file" name="userPhoto"/> <input type="submit" value="重新上傳" name="submit" class="btn btn-success btn-xs "/> </form>';
+        break;
     }
     return show;
   }
@@ -135,8 +139,18 @@ $(document).ready(function() {
         break;
 
       case 'text':
-        //console.log('show', show);
         show = $(obj).children('input').val();
+        break;
+
+      case 'img':
+        show = $(obj).children('form').children('input').val();
+
+        var imgPath = show.toString().substring( 1 + show.lastIndexOf('\\'), show.length );
+        imgPath = 'uploads\\' + imgPath;
+
+        show = '<img src="' + imgPath + '">';
+        //console.log('show', imgPath );
+
         break;
     }
 

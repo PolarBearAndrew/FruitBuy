@@ -7,7 +7,8 @@ var done = false;
 router.use(multer({
     dest: './public/uploads/',
     rename: function(fieldname, filename) {
-        return filename + Date.now();
+        // return filename + Date.now();
+        return filename;
     },
     onFileUploadStart: function(file) {
         console.log(file.originalname + ' tis starting ...')
@@ -25,7 +26,8 @@ router.post('/new', function(req, res) {
     if (done == true) {
         console.log(req.files);
         console.log(req.files.userPhoto.path);
-        res.json({ path: req.files.userPhoto.path.replace(/public\//g, '') });
+
+        res.status(204).json({ path: req.files.userPhoto.path.replace(/public\//g, '') });
     }
 });
 

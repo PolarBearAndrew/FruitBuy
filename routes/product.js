@@ -18,7 +18,7 @@ router.get('/', (req, res, next) => {
     let schema = [], data = [];
     schema = [
       { title: '產品標題', ctrl: 'text', schema: 'title' },
-      { title: '產品圖片', ctrl: 'text', schema: 'img' },
+      { title: '產品圖片', ctrl: 'img', schema: 'img' },
       { title: '產品說明', ctrl: 'text', schema: 'info' },
       { title: '價格', ctrl: 'text', schema: 'cost' },
       { title: '產品狀態', ctrl: 'status', schema: 'status' }
