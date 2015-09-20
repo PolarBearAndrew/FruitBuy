@@ -46,8 +46,8 @@ $(document).ready(function() {
       for (var i = 0; i < arr.length; i++) {
         var show = controlsValue( $(arr[i]).attr('data-ctrl'), arr[i] ); //use data-ctrl to get vaule
         data[ $(arr[i]).attr('data-schema') ] = show;                      //use data-shema to set json
-        // if(show) $(arr[i]).empty().append( show );
-        if(show) $(arr[i]).html( show );
+        if(show) $(arr[i]).empty().append( show );
+        // if(show) $(arr[i]).html( show );
       };
 
 
@@ -121,6 +121,10 @@ $(document).ready(function() {
         show = '<input class="form-control" type="text" value="' + value + '"></input>'
         break;
 
+      case 'textarea':
+        show = '<textarea rows="4" cols="50" class="form-control">'+value+'</textarea>'
+        break;
+
       case 'img':
         show = '<form id="uploadForm" enctype="multipart/form-data" action="/img/new" method="post"> <input type="file" name="userPhoto"/> <input type="submit" value="重新上傳" name="submit" class="btn btn-success btn-xs "/> </form>';
         break;
@@ -154,8 +158,16 @@ $(document).ready(function() {
         show = $(obj).children('input').val();
         break;
 
+      case 'textarea':
+        show = $(obj).children('textarea').val();
+        break;
+
       case 'img':
         var imgPath = $(obj).children('form').children('input').val();
+
+        if(imgPath == ''){
+          imgPath = $(obj).attr('data-url');
+        }
         imgPath = imgPath.toString().substring( 1 + imgPath.lastIndexOf('\\'), imgPath.length );
         imgPath = 'uploads\\' + imgPath;
         show = '<img src="' + imgPath + '">';

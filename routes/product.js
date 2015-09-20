@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
     schema = [
       { title: '產品標題', ctrl: 'text', schema: 'title' },
       { title: '產品圖片', ctrl: 'img', schema: 'img' },
-      { title: '產品說明', ctrl: 'text', schema: 'info' },
+      { title: '產品說明', ctrl: 'textarea', schema: 'info' },
       { title: '價格', ctrl: 'text', schema: 'cost' },
       { title: '產品狀態', ctrl: 'status', schema: 'status' }
     ];
@@ -45,8 +45,8 @@ router.get('/', (req, res, next) => {
                 let tmp = [];
                 tmp.push(val.title);
                 tmp.push(val.img);
-                tmp.push(val.cost);
                 tmp.push(val.info);
+                tmp.push(val.cost);
                 tmp.push(val.status);
                 tmp.push(val._id.toString());
 
