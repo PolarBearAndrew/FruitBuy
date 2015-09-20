@@ -15,3 +15,8 @@
 .ctrl {
   margin-right: 4px;
 }
+
+/* line 14, ../sass/crud.sass */
+td img {
+  max-width: 200px;
+}

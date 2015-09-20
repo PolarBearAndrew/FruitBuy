@@ -23,8 +23,17 @@ $(document).ready(function() {
     var onEdit = parseInt( $(this).attr('data-onEdit') );
     var arr = $('[data-orderId="' + id + '"] td[data-ctrl]');
 
+    var reload = setTimeout( function(){
+      console.log('reload img');
+      var $img = $('[data-orderId="' + id + '"] img');
+      $img.attr( 'src', $img.attr('src') );
+    }, 3000);
+
     // going to save
     if( onEdit === 1 ){
+
+      $('input[type="submit"]').click();
+
       // chage btn icon
       $(this).empty().append(icoEdit);
 
@@ -32,12 +41,15 @@ $(document).ready(function() {
 
       data._id = id;
 
+
       // loop to read each <td>
       for (var i = 0; i < arr.length; i++) {
         var show = controlsValue( $(arr[i]).attr('data-ctrl'), arr[i] ); //use data-ctrl to get vaule
         data[ $(arr[i]).attr('data-schema') ] = show;                      //use data-shema to set json
-        if(show) $(arr[i]).empty().append( show );
+        // if(show) $(arr[i]).empty().append( show );
+        if(show) $(arr[i]).html( show );
       };
+
 
       // ajax save api
       console.log('data', data);
@@ -143,19 +155,14 @@ $(document).ready(function() {
         break;
 
       case 'img':
-        show = $(obj).children('form').children('input').val();
-
-        var imgPath = show.toString().substring( 1 + show.lastIndexOf('\\'), show.length );
+        var imgPath = $(obj).children('form').children('input').val();
+        imgPath = imgPath.toString().substring( 1 + imgPath.lastIndexOf('\\'), imgPath.length );
         imgPath = 'uploads\\' + imgPath;
-
         show = '<img src="' + imgPath + '">';
-        //console.log('show', imgPath );
-
         break;
     }
 
     show = show || ' ';
-
     return show;
   }
 
