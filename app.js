@@ -10,8 +10,8 @@ var routes       = require('./routes/index');
 
 var em       = require('./routes/em');
 var img      = require('./routes/img');
+var face     = require('./routes/face');
 var user     = require('./routes/user');
-var adImg    = require('./routes/adImg');
 var order    = require('./routes/order');
 var product  = require('./routes/product');
 
@@ -38,9 +38,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/img', img);
 
 app.use('/product', product);
-app.use('/adImg', adImg);
 app.use('/order', order);
 app.use('/user', user);
+app.use('/face', face);
 app.use('/em', em);
 
 app.use('/', routes);

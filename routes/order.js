@@ -6,7 +6,7 @@ let router = express.Router();
 let debug = require('debug')('API: Order');
 
 //model
-let  Order = require('../models/Order.js');
+let Order = require('../models/order.js');
 
 //feature
 let checkPorperty = require('../feature/checkProperty.js');
@@ -29,7 +29,7 @@ router.get('/', (req, res, next) => {
       time: '20130920',
       userId: 'AndrewChen',
       buy: '無資料',
-      address: '新生南物一段123',
+      address: '新生南路一段123',
       cost: '999',
     }]
 
@@ -53,7 +53,7 @@ router.get('/', (req, res, next) => {
             return tmp;
           });
 
-          res.render('bs_crud', { schema: schema, data: result, apiUrl: 'Order' });
+          res.render('bs_crud', { schema: schema, data: result, apiUrl: 'order' });
           debug('載入經 em 料成功', result);
         })
         .catch( err => {
@@ -72,10 +72,11 @@ router.post('/', (req, res, next) => {
     debug('[POST] 新增 Order req.body ->', req.body );
 
     let order = new Order({
-        name: '',
-        email: '',
-        pwd: '',
-        phone: ''
+        time: '',
+        userId: '',
+        buy: '',
+        address: '',
+        cost: ''
     });
 
     //db operation
@@ -101,7 +102,7 @@ router.put('/', (req, res, next) => {
     debug('[PUT] 更新 Order資料 req.body ->', req.body );
 
     //check
-    let miss = check( req.body, ['name', 'email', 'pwd', 'phone'] );
+    let miss = check( req.body, ['time', 'userId', 'buy', 'address', 'cost'] );
     if(!miss.check){
         debug('[POST] 新增 Order miss data ->', miss.miss);
         return res.status(500).send('缺少必要參數', miss.miss);
@@ -109,10 +110,11 @@ router.put('/', (req, res, next) => {
 
     //db entity
     let info = {
-        name: req.body.name,
-        email: req.body.email,
-        pwd: req.body.pwd,
-        phone: req.body.phone
+        time: req.body.time,
+        userId: req.body.userId,
+        buy: req.body.buy,
+        address: req.body.address,
+        cost: req.body.cost
     };
 
 

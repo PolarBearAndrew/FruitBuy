@@ -13,5 +13,4 @@ router.get('/jsdc', (req, res, next) => {
   res.render(req.params.page);
 });
 
-
 module.exports = router;
