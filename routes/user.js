@@ -42,8 +42,8 @@ router.get('/', (req, res, next) => {
 
                 let tmp = [];
                 tmp.push(val.name);
-                tmp.push(val.pwd);
                 tmp.push(val.email);
+                tmp.push(val.pwd);
                 tmp.push(val.phone);
                 tmp.push(val._id.toString());
 

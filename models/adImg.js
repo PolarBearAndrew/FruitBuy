@@ -6,14 +6,14 @@ var db = link.db;
 /*
  *  Schema of Home
  */
-var myAd = new mongoose.Schema({
-    url: {
+var AdImg = new mongoose.Schema({
+    img: {
         type: String
     },
-    index: {
+    imgIndex: {
         type: String
     }
 });
 
 //exports model
-module.exports = db.model('myAd', myAd);
+module.exports = db.model('adImg', AdImg);

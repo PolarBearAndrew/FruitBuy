@@ -210,6 +210,8 @@ $(document).ready(function() {
     var arr = $('table#main tbody tr:first-child td');
     // var row = '<tr data-orderid="' + id +'">';
 
+
+
     // create
     $.ajax({
 
@@ -224,6 +226,7 @@ $(document).ready(function() {
       },
 
       error: function( err ){
+
         console.log('新增資料失敗', err);
       }
 
