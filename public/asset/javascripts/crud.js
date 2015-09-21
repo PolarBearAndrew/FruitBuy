@@ -11,6 +11,7 @@ $(document).ready(function() {
 
   var auth = ['員工', '主管'];
   var status = ['上架', '下架'];
+  var statusO = ['準備中', '已出貨', '已送達', '結案'];
 
   $('html, body').on('click', '.edit', function(){
 
@@ -113,6 +114,10 @@ $(document).ready(function() {
         show = buildSelector( status, value )
         break;
 
+      case 'statusO':
+        show = buildSelector( statusO, value )
+        break;
+
       case 'num':
         show = '<input type="number" class="form-control"  value="' + value + '" >';
         break;
@@ -147,6 +152,10 @@ $(document).ready(function() {
         break;
 
       case 'status':
+        show = $(obj).children('select').val();
+        break;
+
+      case 'statusO':
         show = $(obj).children('select').val();
         break;
 

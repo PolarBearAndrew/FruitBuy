@@ -21,6 +21,9 @@ var Order = new mongoose.Schema({
     },
     cost: {
         type: String
+    },
+    status: {
+        type: String
     }
 });
 

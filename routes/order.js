@@ -21,7 +21,8 @@ router.get('/', (req, res, next) => {
       { title: '訂購帳號', ctrl: 'text', schema: 'userId' },
       { title: '購買項目', ctrl: 'text', schema: 'buy' },
       { title: '送貨地址', ctrl: 'text', schema: 'address' },
-      { title: '總金額', ctrl: 'text', schema: 'cost' }
+      { title: '總金額', ctrl: 'text', schema: 'cost' },
+      { title: '狀態', ctrl: 'statusO', schema: 'status' }
     ];
 
     let initCustomer = [{
@@ -31,6 +32,7 @@ router.get('/', (req, res, next) => {
       buy: '無資料',
       address: '新生南路一段123',
       cost: '999',
+      status: '準備中',
     }]
 
 
@@ -48,6 +50,7 @@ router.get('/', (req, res, next) => {
             tmp.push(val.buy);
             tmp.push(val.address);
             tmp.push(val.cost);
+            tmp.push(val.status);
             tmp.push(val._id.toString());
 
             return tmp;
@@ -76,7 +79,8 @@ router.post('/', (req, res, next) => {
         userId: '',
         buy: '',
         address: '',
-        cost: ''
+        cost: '',
+        status: '準備中'
     });
 
     //db operation
@@ -114,7 +118,8 @@ router.put('/', (req, res, next) => {
         userId: req.body.userId,
         buy: req.body.buy,
         address: req.body.address,
-        cost: req.body.cost
+        cost: req.body.cost,
+        status: req.body.status
     };
 
 
