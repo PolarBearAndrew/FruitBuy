@@ -21,7 +21,8 @@ router.get('/', (req, res, next) => {
       { title: '產品圖片', ctrl: 'img', schema: 'img' },
       { title: '產品說明', ctrl: 'textarea', schema: 'info' },
       { title: '價格', ctrl: 'text', schema: 'cost' },
-      { title: '產品狀態', ctrl: 'status', schema: 'status' }
+      { title: '產品狀態', ctrl: 'status', schema: 'status' },
+      { title: '產品排序編碼', ctrl: 'num', schema: 'index' }
     ];
 
     let initCustomer = [{
@@ -31,11 +32,12 @@ router.get('/', (req, res, next) => {
       info: '空運加上冷藏配送的日本富士山蘋果，不論品質、新鮮度皆是在最完美的情況下送達。為了保持鮮甜僅提供清洗的服務，避免切片影響完美品質！',
       cost: 'NT$100/份',
       status: '未上架',
+      index: '0'
     }]
 
 
     Product.find()
-           .sort({ title: 1 })
+           .sort({ index: 1 })
            .execAsync()
            .then( result => {
               if(result.length === 0) result = initCustomer;
@@ -48,6 +50,7 @@ router.get('/', (req, res, next) => {
                 tmp.push(val.info);
                 tmp.push(val.cost);
                 tmp.push(val.status);
+                tmp.push(val.index);
                 tmp.push(val._id.toString());
 
                 return tmp;
@@ -76,7 +79,8 @@ router.post('/', (req, res, next) => {
         img: '',
         cost: '',
         info: '',
-        status: ''
+        status: '',
+        index: ''
     });
 
     //db operation
@@ -102,7 +106,7 @@ router.put('/', (req, res, next) => {
     debug('[PUT] 更新 Product資料 req.body ->', req.body );
 
     //check
-    let miss = check( req.body, ['title', 'img', 'cost', 'info', 'status'] );
+    let miss = check( req.body, ['title', 'img', 'cost', 'info', 'status', 'index'] );
     if(!miss.check){
         debug('[POST] 新增 Product miss data ->', miss.miss);
         return res.status(500).send('缺少必要參數', miss.miss);
@@ -114,7 +118,8 @@ router.put('/', (req, res, next) => {
         img: req.body.img,
         cost: req.body.cost,
         info: req.body.info,
-        status: req.body.status
+        status: req.body.status,
+        index: req.body.index
     };
 
 

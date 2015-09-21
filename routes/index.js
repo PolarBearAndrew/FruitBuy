@@ -26,7 +26,7 @@ router.get('/shop', (req, res, next) => {
   }]
 
    Product.find()
-           .sort({ title: 1 })
+           .sort({ index: 1 })
            .execAsync()
            .then( result => {
 

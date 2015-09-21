@@ -21,6 +21,9 @@ var Product = new mongoose.Schema({
     },
     status: {
         type: String
+    },
+    index: {
+        type: String
     }
 });
 
