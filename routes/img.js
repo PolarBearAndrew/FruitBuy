@@ -28,8 +28,9 @@ router.post('/new', function(req, res) {
         console.log(req.files.userPhoto.path);
 
         res.status(204).json({ path: req.files.userPhoto.path.replace(/public\//g, '') });
+    }else{
+        res.status(204).end();
     }
-    res.status(204);
 });
 
 module.exports = router;
