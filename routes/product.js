@@ -35,7 +35,7 @@ router.get('/', (req, res, next) => {
 
 
     Product.find()
-           .sort({ email: 1 })
+           .sort({ title: 1 })
            .execAsync()
            .then( result => {
               if(result.length === 0) result = initCustomer;

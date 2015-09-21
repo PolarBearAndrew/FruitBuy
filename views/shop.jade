@@ -6,18 +6,22 @@ block content
     br
   .ui.container
     .ui.four.cards.stackable
-      - for( var i = 0; i < 20; i++ )
+      - for( var i = 0; i < data.length; i++ )
+        - var tmp = data[i];
         .ui.card.red
           .image
-            img(src='asset/images/wireframe/demo-apple.jpg')
+            //- img(src='asset/images/wireframe/demo-apple.jpg')
+            img(src= tmp.img.replace(/<img src="/, '').replace(/">/, '') )
           .content
-            a.header(href="/detail?item=123") 空運冷藏日本富士山蘋果
+            a.header(href="/detail?item=123")= tmp.title
+            //- 空運冷藏日本富士山蘋果
             .meta
-              span.date NT$ 35.00 / 份
-            .description
-              | 空運加上冷藏配送的日本富士山蘋果，不論品質、新鮮度皆是在最完美的情況下送達。為了保持鮮甜僅提供清洗的服務，避免切片影響完美品質！
+              span.date= tmp.cost
+              //-NT$ 35.00 / 份
+            .description= tmp.info
+              //-空運加上冷藏配送的日本富士山蘋果，不論品質、新鮮度皆是在最完美的情況下送達。為了保持鮮甜僅提供清洗的服務，避免切片影響完美品質！
           .extra.content
-            a.add2cart.ui.button.inverted.red(style="float:right")
+            a.add2cart.ui.button.inverted.red(style="float:right" data-id=tmp._id)
               i.add.to.cart.icon
               | 放入水果籃
   //- dialog
