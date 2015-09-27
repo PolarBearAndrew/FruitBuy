@@ -1,10 +1,14 @@
+var url = config.ip;
+
 $(document).ready(function(){
 
   // console.log('start scuriry check...');
-
   var name  = localStorage.getItem("FruitBuyUserName");
   var email = localStorage.getItem("FruitBuyUserEmail");
-  var auth = localStorage.getItem("FruitBuyUserAuth");
+  var auth = localStorage.getItem("FruitBuyUserAuth") || 'default';
+
+  console.log('auth info', name, email, auth);
+
 
   if(name){
     $('#user').text( name + '/' + auth );
@@ -21,6 +25,7 @@ $(document).ready(function(){
 
     default: [
       { path: '/', auth: true },
+      { path: '/shop', auth: true }
     ]
   };
 
@@ -35,7 +40,7 @@ $(document).ready(function(){
       break;
 
     }else if( myRule[r].path === path && myRule[r].auth === false){
-      window.location.assign(  url + 'user/login' ); // 直接導向到 login
+      window.location.assign(  url + 'login' ); // 直接導向到 login
     }
 
   }

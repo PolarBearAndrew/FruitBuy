@@ -24,8 +24,8 @@ $(document).ready( function(){
           window.location.assign(  url + 'shop' ); // 直接導向到 order
 
           // set local storage
-          localStorage.setItem("FruitBuyUserName", result.name);
-          localStorage.setItem("FruitBuyUserEmail", result.email);
+          localStorage.setItem("FruitBuyUserName", result.name );
+          localStorage.setItem("FruitBuyUserEmail", result.email );
         }
         else{
           $('#loginFail').modal('show');
