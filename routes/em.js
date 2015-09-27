@@ -133,14 +133,14 @@ router.delete('/', (req, res, next) => {
     debug('[DELETE] 刪除em req.body ->', req.body );
 
     //check
-    let miss = check( req.body, ['uid'] );
+    let miss = check( req.body, ['_id'] );
     if(!miss.check){
         debug('[POST] 新增em miss data ->', miss.miss);
         return res.status(500).send('缺少必要參數', miss.miss);
     }
 
     //db operation
-    Em.findOneAndRemove( { _id: req.body.uid })
+    Em.findOneAndRemove( { _id: req.body._id })
         .removeAsync()
         .then( result => {
             debug('[DELETE] 刪除em success ->', result);

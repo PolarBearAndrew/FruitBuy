@@ -133,14 +133,14 @@ router.delete('/', (req, res, next) => {
     debug('[DELETE] 刪除 Face req.body ->', req.body );
 
     //check
-    let miss = check( req.body, ['uid'] );
+    let miss = check( req.body, ['_id'] );
     if(!miss.check){
         debug('[POST] 新增 Face miss data ->', miss.miss);
         return res.status(500).send('缺少必要參數', miss.miss);
     }
 
     //db operation
-    Face.findOneAndRemove( { _id: req.body.uid })
+    Face.findOneAndRemove( { _id: req.body._id })
         .removeAsync()
         .then( result => {
             debug('[DELETE] 刪除 Face success ->', result);

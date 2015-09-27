@@ -148,14 +148,14 @@ router.delete('/', (req, res, next) => {
     debug('[DELETE] 刪除 Order req.body ->', req.body );
 
     //check
-    let miss = check( req.body, ['uid'] );
+    let miss = check( req.body, ['_id'] );
     if(!miss.check){
         debug('[POST] 新增 Order miss data ->', miss.miss);
         return res.status(500).send('缺少必要參數', miss.miss);
     }
 
     //db operation
-    Order.findOneAndRemove( { _id: req.body.uid })
+    Order.findOneAndRemove( { _id: req.body._id })
         .removeAsync()
         .then( result => {
             debug('[DELETE] 刪除 Order success ->', result);
@@ -177,7 +177,6 @@ router.delete('/', (req, res, next) => {
 router.get('/all', (req, res, next) => {
 
     debug('[GET] 取得 Order資料 req.body ->', req.body );
-
 
     //db operation
     Order.find({})

@@ -139,7 +139,7 @@ router.put('/', (req, res, next) => {
 
 
 /*
- * [PUT] 更新 Product資料
+ * [PUT] 刪除 Product資料
  * request : body.uid, body.name, body.account, body.pwd, body.auth
  * respone : db result
  */
@@ -148,14 +148,14 @@ router.delete('/', (req, res, next) => {
     debug('[DELETE] 刪除 Product req.body ->', req.body );
 
     //check
-    let miss = check( req.body, ['uid'] );
+    let miss = check( req.body, ['_id'] );
     if(!miss.check){
         debug('[POST] 新增 Product miss data ->', miss.miss);
         return res.status(500).send('缺少必要參數', miss.miss);
     }
 
     //db operation
-    Product.findOneAndRemove( { _id: req.body.uid })
+    Product.findOneAndRemove( { _id: req.body._id })
         .removeAsync()
         .then( result => {
             debug('[DELETE] 刪除 Product success ->', result);
