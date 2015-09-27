@@ -207,13 +207,13 @@ router.post('/login', (req, res, next) => {
     }
 
     //db operation
-    User.find({ email, pwd })
+    User.find({ email: req.body.email, pwd: req.body.pwd })
         .execAsync()
         .then( result => {
 
             if( result.length === 1 ){
                 debug('[POST] User 登入(成功) success ->', result);
-                return res.json({ login: true });
+                return res.json({ login: true, name: result.name, email: result.email });
             }else{
                 debug('[POST] User 登入(帳密錯誤) success ->', result);
                 return res.json({ login: false });
