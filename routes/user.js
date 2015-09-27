@@ -78,10 +78,10 @@ router.post('/', (req, res, next) => {
     }
 
     let  user = new User({
-        name: req.body.name,
         email: req.body.email,
-        pwd: req.body.pwd,
-        phone: req.body.phone
+        phone: req.body.phone,
+        name: req.body.name,
+        pwd: req.body.pwd
     });
 
     //db operation
