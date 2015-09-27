@@ -22,12 +22,15 @@ block content
         .field
           input(type='text', name='phone', placeholder='手機號碼')
         button#register.ui.button.green(type='button') 同意合約並註冊
-      .ui.negative.message.hidden
+      #pwdError.ui.negative.message.hidden
+        i.close.icon
+        .header
+          | 註冊資訊錯誤
+        p
+          | 請重新檢查密碼是否正確
+      #networkError.ui.negative.message.hidden
         i.close.icon
         .header
           | 註冊失敗
         p
-          | 密碼確認失敗
-  script
-    $('.message .close').on('click', function() {
-    $(this).closest('.message').transition('fade'); });
+          | 抱歉！註冊失敗！
