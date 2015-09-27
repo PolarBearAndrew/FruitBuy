@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  script(src='/asset/javascripts/register.js')
   .ui.container
     center
       .ui.sizer.vertical.segment
@@ -11,12 +12,16 @@ block content
         br
         br
         .field
-          input(type='text', name='first-name', placeholder='Email 信箱')
+          input(type='text', name='name', placeholder='姓名')
         .field
-          input(type='text', name='last-name', placeholder='Password 密碼')
+          input(type='email', name='email', placeholder='Email 信箱')
         .field
-          input(type='text', name='last-name', placeholder='Password 密碼確認')
-        button.ui.button.green(type='submit') 同意合約並註冊
+          input(type='password', name='pwd', placeholder='Password 密碼')
+        .field
+          input(type='password', name='pwd2', placeholder='Password 密碼確認')
+        .field
+          input(type='text', name='phone', placeholder='手機號碼')
+        button#register.ui.button.green(type='button') 同意合約並註冊
       .ui.negative.message.hidden
         i.close.icon
         .header
@@ -24,6 +29,5 @@ block content
         p
           | 密碼確認失敗
   script
-    //$('.message').transition('fade'); //註冊失敗顯示
     $('.message .close').on('click', function() {
     $(this).closest('.message').transition('fade'); });

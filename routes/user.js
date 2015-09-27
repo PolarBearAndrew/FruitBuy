@@ -14,6 +14,9 @@ let check = checkPorperty.check;
 
 //=======================================================
 
+/*
+ * CRUD 頁面
+ */
 router.get('/', (req, res, next) => {
     let schema = [], data = [];
     schema = [
@@ -68,11 +71,17 @@ router.post('/', (req, res, next) => {
 
     debug('[POST] 新增 User req.body ->', req.body );
 
+    let miss = check( req.body, ['name', 'email', 'pwd', 'phone'] );
+    if(!miss.check){
+        debug('[POST] 新增 User miss data ->', miss.miss);
+        return res.status(500).send('缺少必要參數', miss.miss);
+    }
+
     let  user = new User({
-        name: '',
-        email: '',
-        pwd: '',
-        phone: ''
+        name: req.body.name,
+        email: req.body.email,
+        pwd: req.body.pwd,
+        phone: req.body.phone
     });
 
     //db operation
@@ -100,7 +109,7 @@ router.put('/', (req, res, next) => {
     //check
     let miss = check( req.body, ['name', 'email', 'pwd', 'phone'] );
     if(!miss.check){
-        debug('[POST] 新增 User miss data ->', miss.miss);
+        debug('[POST] 更新 User miss data ->', miss.miss);
         return res.status(500).send('缺少必要參數', miss.miss);
     }
 
@@ -126,7 +135,6 @@ router.put('/', (req, res, next) => {
             return next(err);
         });
 });
-
 
 /*
  * [PUT] 更新 User資料
@@ -158,7 +166,6 @@ router.delete('/', (req, res, next) => {
         });
 });
 
-
 /*
  * [GET] 取得 User資料
  * request : body.uid, body.name, body.account, body.pwd, body.auth
@@ -179,6 +186,41 @@ router.get('/all', (req, res, next) => {
         })
         .catch( err => {
             debug('[GET] 取得 User資料 fail ->', err);
+            return next(err);
+        });
+});
+
+/*
+ * [POST] 登入
+ * request : body.account, body.pwd
+ * respone : db result
+ */
+router.post('/login', (req, res, next) => {
+
+    debug('[POST] 取得 User資料 req.body ->', req.body );
+
+    //check
+    let miss = check( req.body, ['email', 'pwd'] );
+    if(!miss.check){
+        debug('[POST] 新增 User miss data ->', miss.miss);
+        return res.status(500).send('缺少必要參數', miss.miss);
+    }
+
+    //db operation
+    User.find({ email, pwd })
+        .execAsync()
+        .then( result => {
+
+            if( result.length === 1 ){
+                debug('[POST] User 登入(成功) success ->', result);
+                return res.json({ login: true });
+            }else{
+                debug('[POST] User 登入(帳密錯誤) success ->', result);
+                return res.json({ login: false });
+            }
+        })
+        .catch( err => {
+            debug('[POST] User 登入 fail (錯誤) ->', err);
             return next(err);
         });
 });

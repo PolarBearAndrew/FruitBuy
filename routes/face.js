@@ -27,7 +27,7 @@ router.get('/', (req, res, next) => {
       img: 'asset/images/wireframe/demo-apple.jpg',
       imgIndex: '999',
       note: '無'
-    }]
+    }];
 
 
     Face.find()
@@ -54,7 +54,7 @@ router.get('/', (req, res, next) => {
           debug('載入經 Face 料失敗', err);
           next(err);
         });
-})
+});
 
 /*
  * [POST] 新增 Face
