@@ -55,6 +55,7 @@ $(document).ready( function(){
         console.log('success', result);
         //$('#checkout').modal('show');
         window.location.assign(  url + 'myOrder' ); // 直接導向到 login
+        localStorage.setItem('FruitBuyCart', '');
       },
       fail: function( err ){
         console.log('fail', err);

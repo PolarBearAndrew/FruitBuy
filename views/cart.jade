@@ -2,6 +2,13 @@ extends layout
 
 block content
   .ui.last.container
+    - if( data.length === 0 )
+      center
+        br
+        br
+        h1.ui.header 您尚未選購任何 鮮•水果~!
+        br
+        br
     .ui.three.cards.stackable
       - for( var i = 0; i < data.length; i++ )
         - var tmp = data[i];

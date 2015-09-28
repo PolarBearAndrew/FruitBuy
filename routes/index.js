@@ -44,7 +44,7 @@ router.get('/shop', (req, res, next) => {
 
 router.post('/cart', (req, res, next) => {
 
-  var data = req.body.cart || [];
+  var data = req.body.cart || '[]';
   data = JSON.parse(data);
 
   debug('載入經 cart ', data);
