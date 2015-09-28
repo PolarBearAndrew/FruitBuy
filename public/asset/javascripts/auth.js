@@ -16,16 +16,39 @@ $(document).ready(function(){
 
   var Rules = {
     '員工': [
-      { path: '/', auth: true }
+      { path: '/cart', auth: true },
+      { path: '/detail', auth: true },
+      { path: '/myOrder', auth: true },
+
+      { path: '/em', auth: true },
+      { path: '/user', auth: true },
+      { path: '/face', auth: true },
+      { path: '/order', auth: true },
+      { path: '/product', auth: true }
     ],
 
     '主管': [
-      { path: '/', auth: true },
+      { path: '/cart', auth: true },
+      { path: '/detail', auth: true },
+      { path: '/myOrder', auth: true },
+
+      { path: '/em', auth: true },
+      { path: '/user', auth: true },
+      { path: '/face', auth: true },
+      { path: '/order', auth: true },
+      { path: '/product', auth: true }
     ],
 
     default: [
-      { path: '/', auth: true },
-      { path: '/shop', auth: true }
+      { path: '/cart', auth: true },
+      { path: '/detail', auth: true },
+      { path: '/myOrder', auth: true },
+
+      { path: '/em', auth: true },
+      { path: '/user', auth: true },
+      { path: '/face', auth: true },
+      { path: '/order', auth: true },
+      { path: '/product', auth: true }
     ]
   };
 

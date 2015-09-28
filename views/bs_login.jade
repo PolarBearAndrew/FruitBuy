@@ -1,0 +1,26 @@
+extends bs_container
+
+block content
+  .ui.container(style="padding-top: 80px; min-height: 460px")
+    center
+      .ui.form
+        img.ui.image(src='./asset/images/icon.png', height="120px", style="")
+        br
+        .field(style="max-width:300px")
+          .ui.left.icon.input
+            input(type='text', name="account" placeholder='account')
+            i.user.icon
+        .field(style="max-width:300px")
+          .ui.left.icon.input
+            input(type='password', name="pwd" placeholder='Password')
+            i.lock.icon
+        #login.ui.blue.submit.button LOGIN
+
+  //- dialog
+  #loginFail.ui.modal
+    .header.ui.red 登入失敗
+    .content
+      p 帳號或密碼錯誤，請重新輸入
+    include footer
+
+  script(src='/asset/javascripts/bs_login.js')

@@ -178,5 +178,41 @@ router.get('/all', (req, res, next) => {
         });
 });
 
+/*
+ * [POST] 登入
+ * request : body.account, body.pwd
+ * respone : db result
+ */
+router.post('/login', (req, res, next) => {
+
+    debug('[POST] 取得 Em 資料 req.body ->', req.body );
+
+    //check
+    let miss = check( req.body, ['account', 'pwd'] );
+    if(!miss.check){
+        debug('[POST] 新增 Em miss data ->', miss.miss);
+        return res.status(500).send('缺少必要參數', miss.miss);
+    }
+
+    //db operation
+      Em.find({ account: req.body.account, pwd: req.body.pwd })
+        .execAsync()
+        .then( result => {
+
+            if( result.length === 1 ){
+                debug('[POST] Em 登入(成功) success ->', result);
+                var info = result[0];
+                return res.json({ login: true, name: info.name, account: info.account, auth: info.auth });
+            }else{
+                debug('[POST] Em 登入(帳密錯誤) success ->', result);
+                return res.json({ login: false });
+            }
+        })
+        .catch( err => {
+            debug('[POST] Em 登入 fail (錯誤) ->', err);
+            return next(err);
+        });
+});
+
 
 module.exports = router;
