@@ -1,3 +1,5 @@
+var url = config.ip;
+
 $(document).ready( function(){
 
   // $('html, body').on('click', '.checkout', function(){
@@ -7,6 +9,8 @@ $(document).ready( function(){
   // }); // #login click end
 
   $('html, body').on('change' , 'input.product', sum );
+
+  var $total = $('input#total');
 
   function sum(){
 
@@ -20,7 +24,6 @@ $(document).ready( function(){
         order += $(tmp).attr('data-name') + '*' + $(tmp).val() + '/份,  ';
       }
 
-      var $total = $('input#total');
       $total.val(sum);
       $total.attr('data-order', order);
 
@@ -28,5 +31,38 @@ $(document).ready( function(){
   }
 
   sum();
+
+  // send
+  $('html, body').on('click', '#send', function(){
+    // console.log('submit');
+
+    if( $('#address').val() === ''){
+      return false;
+    }
+
+    var data = {
+        userId: localStorage.getItem("FruitBuyUserName") + '/' + localStorage.getItem("FruitBuyUserEmail"),
+        buy: $total.attr('data-order'),
+        address: $('#address').val(),
+        cost: $total.val()
+    };
+
+    $.ajax({
+      url: url + 'order',
+      type: 'POST',
+      data: data,
+      success: function( result ){
+        console.log('success', result);
+        //$('#checkout').modal('show');
+        window.location.assign(  url + 'myOrder' ); // 直接導向到 login
+      },
+      fail: function( err ){
+        console.log('fail', err);
+      }
+    });
+
+
+    return false;
+  });
 
 }); //doc ready end

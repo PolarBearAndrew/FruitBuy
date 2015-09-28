@@ -41,8 +41,8 @@ block content
               button.ui.button.orange.inverted
                 i.dollar.icon
                 | 送貨地址
-              input(type='text', min='0', placeholder="送到哪裡呢?" )
-        .checkout.ui.submit.button.green(style="width:100%") 確定送出
+              input#address(type='text', min='0', placeholder="送到哪裡呢?" )
+        .checkout.ui.submit.button.green#send(style="width:100%") 確定送出
 
   //- dialog
   #checkout.ui.modal

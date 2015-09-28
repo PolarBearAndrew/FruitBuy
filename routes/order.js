@@ -74,12 +74,20 @@ router.post('/', (req, res, next) => {
 
     debug('[POST] 新增 Order req.body ->', req.body );
 
+    let miss = check( req.body, [ 'userId', 'buy', 'address', 'cost'] );
+    if(!miss.check){
+        debug('[POST] 新增 Order miss data ->', miss.miss);
+        return res.status(500).send('缺少必要參數', miss.miss);
+    }
+
+    var d = new Date();
+
     let order = new Order({
-        time: '',
-        userId: '',
-        buy: '',
-        address: '',
-        cost: '',
+        time: d.toLocaleString(),
+        userId: req.body.userId,
+        buy: req.body.buy,
+        address: req.body.address,
+        cost: req.body.cost,
         status: '準備中'
     });
 
@@ -106,7 +114,7 @@ router.put('/', (req, res, next) => {
     debug('[PUT] 更新 Order資料 req.body ->', req.body );
 
     //check
-    let miss = check( req.body, ['time', 'userId', 'buy', 'address', 'cost'] );
+    let miss = check( req.body, ['userId', 'buy', 'address', 'cost'] );
     if(!miss.check){
         debug('[POST] 新增 Order miss data ->', miss.miss);
         return res.status(500).send('缺少必要參數', miss.miss);
@@ -114,7 +122,6 @@ router.put('/', (req, res, next) => {
 
     //db entity
     let info = {
-        time: req.body.time,
         userId: req.body.userId,
         buy: req.body.buy,
         address: req.body.address,
