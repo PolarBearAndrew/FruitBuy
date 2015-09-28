@@ -22,7 +22,7 @@ block content
           .ui.left.action.input.right
             button.ui.button.red
               | 數量(份)
-            input(type='number', min='1', style="width:90px", value="1" )
+            input.product(type='number', min='1', style="width:90px", value="1" data-cost=tmp.cost data-name=tmp.title)
   .ui.container
     br
     hr
@@ -35,7 +35,7 @@ block content
               button.ui.button.orange.inverted
                 i.dollar.icon
                 | 總金額
-              input(type='number', min='0', value="750"  disabled="true")
+              input#total(type='number' disabled="true")
           .field
             .ui.left.action.input
               button.ui.button.orange.inverted

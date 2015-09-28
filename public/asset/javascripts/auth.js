@@ -7,7 +7,7 @@ $(document).ready(function(){
   var email = localStorage.getItem("FruitBuyUserEmail");
   var auth = localStorage.getItem("FruitBuyUserAuth") || 'default';
 
-  console.log('auth info', name, email, auth);
+  // console.log('auth info', name, email, auth);
 
 
   if(name){
@@ -59,7 +59,7 @@ $(document).ready(function(){
 
     if( myRule[r].path === path && myRule[r].auth === true){
       //...
-      console.log('scurity pass...');
+      // console.log('scurity pass...');
       break;
 
     }else if( myRule[r].path === path && myRule[r].auth === false){
@@ -68,7 +68,7 @@ $(document).ready(function(){
 
   }
 
-  console.log('none check...');
+  // console.log('none check...');
 
 });
 
