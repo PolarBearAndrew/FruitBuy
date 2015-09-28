@@ -10,8 +10,9 @@ block content
         - var tmp = data[i];
         .ui.card.red
           .image
+            - var url = tmp.img.replace(/<img src="/, '').replace(/">/, '')
             //- img(src='asset/images/wireframe/demo-apple.jpg')
-            img(src= tmp.img.replace(/<img src="/, '').replace(/">/, '') )
+            img(src= url )
           .content
             a.header(href="/detail?item=123")= tmp.title
             //- 空運冷藏日本富士山蘋果
@@ -21,7 +22,7 @@ block content
             .description= tmp.info
               //-空運加上冷藏配送的日本富士山蘋果，不論品質、新鮮度皆是在最完美的情況下送達。為了保持鮮甜僅提供清洗的服務，避免切片影響完美品質！
           .extra.content
-            a.add2cart.ui.button.inverted.red(style="float:right" data-id=tmp._id)
+            a.add2cart.ui.button.inverted.red(style="float:right" data-id=tmp._id data-title=tmp.title data-cost=tmp.cost data-info=tmp.info data-name=tmp.title data-url=url )
               i.add.to.cart.icon
               | 放入水果籃
   //- dialog
