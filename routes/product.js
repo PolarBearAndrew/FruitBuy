@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
       { title: '產品標題', ctrl: 'text', schema: 'title' },
       { title: '產品圖片', ctrl: 'img', schema: 'img' },
       { title: '產品說明', ctrl: 'textarea', schema: 'info' },
-      { title: '價格', ctrl: 'text', schema: 'cost' },
+      { title: '價格', ctrl: 'num', schema: 'cost' },
       { title: '產品狀態', ctrl: 'status', schema: 'status' },
       { title: '產品排序編碼', ctrl: 'num', schema: 'index' }
     ];

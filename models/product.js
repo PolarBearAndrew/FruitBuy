@@ -14,7 +14,7 @@ var Product = new mongoose.Schema({
         type: String
     },
     cost: {
-        type: String
+        type: Number
     },
     info: {
         type: String

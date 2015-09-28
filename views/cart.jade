@@ -16,13 +16,13 @@ block content
           .content
             a.header(href="/detail?item=" + tmp.id )= tmp.title
             .meta
-              span.date= tmp.cost
+              span.date= 'NT$' + tmp.cost + '/份'
             .description= tmp.info
           .extra.content
           .ui.left.action.input.right
             button.ui.button.red
               | 數量(份)
-            input(type='number', min='0', style="width:90px", value="1" )
+            input(type='number', min='1', style="width:90px", value="1" )
   .ui.container
     br
     hr
