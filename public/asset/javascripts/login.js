@@ -3,6 +3,13 @@ var url = config.ip;
 
 $(document).ready( function(){
 
+  if( localStorage.getItem("FruitBuyUserName") ){
+    localStorage.clear();
+    $('#logout').modal('show');
+    $('#user').html();
+  }
+
+
   $('html, body').on('click', '#login', function(){
 
     var data = {
