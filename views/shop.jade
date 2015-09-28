@@ -14,7 +14,7 @@ block content
             //- img(src='asset/images/wireframe/demo-apple.jpg')
             img(src= url )
           .content
-            a.header(href="/detail?item=123")= tmp.title
+            a.header(href="/detail?item=" + tmp._id)= tmp.title
             //- 空運冷藏日本富士山蘋果
             .meta
               span.date= tmp.cost

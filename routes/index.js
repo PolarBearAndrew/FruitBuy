@@ -42,6 +42,16 @@ router.get('/shop', (req, res, next) => {
 
 });
 
+router.post('/cart', (req, res, next) => {
+
+  var data = req.body.cart || [];
+  data = JSON.parse(data);
+
+  debug('載入經 cart ', data);
+
+  res.render('cart', { data: data });
+});
+
 router.get('/:page', (req, res, next) => {
   res.render(req.params.page.replace(/.html/,''));
 });
