@@ -33,6 +33,7 @@ $(document).ready( function(){
           // set local storage
           localStorage.setItem("FruitBuyUserName", result.name );
           localStorage.setItem("FruitBuyUserEmail", result.email );
+          localStorage.setItem("FruitBuyUserPhone", result.phone );
         }
         else{
           $('#loginFail').modal('show');

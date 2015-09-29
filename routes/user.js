@@ -137,7 +137,45 @@ router.put('/', (req, res, next) => {
 });
 
 /*
- * [PUT] 更新 User資料
+ * [PUT] 更新 User資料 ( from user )
+ * request : body.uid, body.name, body.account, body.pwd, body.auth
+ * respone : db result
+ */
+router.put('/update', (req, res, next) => {
+
+    debug('[PUT] 更新 User資料 req.body ->', req.body );
+
+    //check
+    let miss = check( req.body, ['name', 'email', 'pwd', 'phone'] );
+    if(!miss.check){
+        debug('[POST] 更新 User miss data ->', miss.miss);
+        return res.status(500).send('缺少必要參數', miss.miss);
+    }
+
+    //db entity
+    let info = {
+        name: req.body.name,
+        pwd: req.body.newPwd,
+        phone: req.body.phone
+    };
+
+
+    //db operation
+    User.findOneAndUpdate( { email: req.body.email, pwd: req.body.pwd }, info)
+        .updateAsync()
+        .then( result => {
+            debug('[PUT] 更新 User資料 success ->', result);
+            res.json(result);
+            return;
+        })
+        .catch( err => {
+            debug('[PUT] 更新 User資料 fail ->', err);
+            return next(err);
+        });
+});
+
+/*
+ * [PUT] 刪除 User資料
  * request : body.uid, body.name, body.account, body.pwd, body.auth
  * respone : db result
  */
@@ -207,14 +245,14 @@ router.post('/login', (req, res, next) => {
     }
 
     //db operation
-    User.find({ email: req.body.email, pwd: req.body.pwd, auth: 'default' })
+    User.find({ email: req.body.email, pwd: req.body.pwd })
         .execAsync()
         .then( result => {
 
             if( result.length === 1 ){
                 debug('[POST] User 登入(成功) success ->', result);
                 var info = result[0];
-                return res.json({ login: true, name: info.name, email: info.email });
+                return res.json({ login: true, name: info.name, email: info.email, phone: info.phone });
             }else{
                 debug('[POST] User 登入(帳密錯誤) success ->', result);
                 return res.json({ login: false });

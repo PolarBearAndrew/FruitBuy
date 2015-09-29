@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  script(src='/asset/javascripts/userUpdate.js')
+  .ui.container
+    center
+      .ui.sizer.vertical.segment
+        .ui.huge.header 鮮•水果 會員資料更新
+      form.ui.form(style="max-width: 400px")
+        br
+        br
+        .field
+          input(type='password', name='pwd', placeholder='舊的的 Password 密碼')
+        hr
+        .field
+          input(type='text', name='name', placeholder='新的 姓名')
+        //- .field
+        //-   input(type='email', name='email', placeholder='Email 信箱')
+        .field
+          input(type='password', name='newPwd', placeholder='新的 Password 密碼')
+        .field
+          input(type='password', name='newPwd2', placeholder='新的 Password 密碼確認')
+        .field
+          input(type='text', name='phone', placeholder='新的 手機號碼')
+        button#register.ui.button.green(type='button') 確認並更新個人資訊
+
+      #pwdError.ui.negative.message.hidden
+        i.close.icon
+        .header
+          | 更新資訊錯誤
+        p
+          | 請重新檢查新舊密碼是否正確
+      #networkError.ui.negative.message.hidden
+        i.close.icon
+        .header
+          | 更新資料失敗
+        p
+          | 抱歉！更新資料失敗！

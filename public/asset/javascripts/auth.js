@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 
   if(name){
-    $('#user').text( name + '/' + auth );
+    $('#user').text( name + '/' + auth.replace(/default/, '一般會員') );
   }
 
   var Rules = {
