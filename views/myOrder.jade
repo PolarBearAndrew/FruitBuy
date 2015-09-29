@@ -10,42 +10,70 @@ block content
         img#imgSlide(style="background-image:url('/asset/images/wireframe/demo-slide.jpg')")
   h3.ui.center.aligned.header 鮮•水果 訂單狀況
   .ui.last.container
-    .ui.four.steps
-      .step
-        .content
-          br
-          .title 鮮•訂單成功
-          .description
+    - if( data.length === 0 )
+      center
+        br
+        br
+        h1.ui.header 您尚未選購任何 鮮•水果~!
+        br
+        br
+    - for( var o = 0; o < data.length; o++ )
+      - var order = data[o];
+      .ui.four.steps
+        .step
+          .content
             br
-            .ui.relaxed.divided.list
-              .item
-                i.large.checkmark.icon
-                .content
-                  p 空運冷藏日本富士山蘋果
-                  .description 15 份
-              .item
-                i.large.checkmark.icon
-                .content
-                  p 天然無添加蔬果汁(600ml)
-                  .description 30 份
-              .item
-                i.large.checkmark.icon
-                .content
-                  p 當季產地直送水果套裝
-                  .description 99 份
+            .title 鮮•訂單成功
+            .description
+              br
+              .ui.relaxed.divided.list
+                - var item = order.buy.split(',')
+                - for( var i = 0; i < item.length-1; i++ )
+                  .item
+                    i.large.checkmark.icon
+                    .content
+                      p= item[i]
+        - var status = order.status;
 
-      .active.step
-        .content
-          .title 鮮•準備中
-          br
-          .description 準備 鮮•水果 中，鮮•水果透過產地直送提供皆是 24hr 內的新鮮水果，讓您在水果最佳的保鮮期內品嚐。並透過現切的服務，為您處理好鮮•水果後直接送入您的口中。
-      .disabled.step
-        .content
-          .title 鮮•已經出貨
-          br
-          .description 鮮•水果正在前往您那的路途中，由專人為您配送，敬請耐心等候。
-      .disabled.step
-        .content
-          .title 品嚐鮮•水果
-          br
-          .description 鮮•水果正在前往您那的路途中，由專人為您配送，敬請耐心等候。
+        mixin prepare
+          .content
+            .title 鮮•準備中
+            br
+            .description 準備 鮮•水果 中，鮮•水果透過產地直送提供皆是 24hr 內的新鮮水果，讓您在水果最佳的保鮮期內品嚐。並透過現切的服務，為您處理好鮮•水果後直接送入您的口中。
+        mixin send
+          .content
+            .title 鮮•已經出貨
+            br
+            .description 鮮•水果正在前往您那的路途中，由專人為您配送，敬請耐心等候。
+        mixin done
+          .content
+            .title 品嚐鮮•水果
+            br
+            .description 鮮•水果已經送達，開心享用您的 鮮•水果 吧！
+
+
+        - if( status === '準備中')
+          .active.step
+            mixin prepare
+          .disabled.step
+            mixin send
+          .disabled.step
+            mixin done
+        - else if( status === '已出貨')
+          .step
+            mixin prepare
+          .active.step
+            mixin send
+          .disabled.step
+            mixin done
+        - else if( status === '已送達')
+          .step
+            mixin prepare
+          .step
+            mixin send
+          .active.step
+            mixin done
+
+
+        .disabled.step
+

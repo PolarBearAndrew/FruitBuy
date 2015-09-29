@@ -6,7 +6,7 @@ let debug = require('debug')('API: index route');
 
 //model
 let Product = require('../models/product.js');
-let Oreder = require('../models/order.js');
+let Order = require('../models/order.js');
 
 
 router.get('/', (req, res, next) => {
@@ -53,20 +53,27 @@ router.post('/cart', (req, res, next) => {
   res.render('cart', { data: data });
 });
 
-router.get('myOrder', (req, res, next) => {
+router.get('/myOrder', (req, res, next) => {
 
-  var info = req.query.info;
+  console.log('test', req.query.info);
+
+  var info = req.query.info.toString();
 
   debug('載入 myOrder ', info);
 
    //db operation
    Order.find({ userId: info })
+        .sort({ time: 1 })
         .execAsync()
         .then( result => {
+
             debug('[GET] 取得 Order資料 success ->', result);
-            //res.json(result);
-            res.render('cart', { data: data });
-            return;
+
+            result = result.filter(function( val ){
+              return val.status !== '結案'
+            });
+
+            res.render('myOrder', { data: result });
         })
         .catch( err => {
             debug('[GET] 取得 Order資料 fail ->', err);
