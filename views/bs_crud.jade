@@ -20,8 +20,8 @@ block content
             tr(data-orderID= orderId)
               - for( var i = 0; i < schema.length; i++ )
                 - var tmp = data[row][i] || '';
-                - if ( tmp.indexOf('<img src="') != -1 )
-                  - var url = tmp.replace(/<img src="/, '').replace(/">/, '')
+                - if ( tmp.toString().indexOf('<img src="') != -1 )
+                  - var url = tmp.toString().replace(/<img src="/, '').replace(/">/, '')
                   td(data-ctrl= schema[i].ctrl , data-schema= schema[i].schema data-url=url)
                     img(src= url)
                 - else

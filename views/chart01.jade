@@ -1,0 +1,110 @@
+extends bs_container
+
+block content
+  //- link(href='asset/css/font-awesome.min.css', rel='stylesheet')
+  //- link(href='asset/css/bootstrap.css', rel='stylesheet')
+  link(href='asset/stylesheets/chart/carousel.css', rel='stylesheet')
+  link(href='asset/stylesheets/chart/echartsHome.css', rel='stylesheet')
+  //- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+  //- if lt IE 9
+    script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+    script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+
+  script(src='/asset/javascripts/chart/echarts.js')
+  script(src='/asset/javascripts/chart/codemirror.js')
+  script(src='/asset/javascripts/chart/main.js')
+
+  link(href='/asset/stylesheets/chart/codemirror.css', rel='stylesheet')
+  link(href='/asset/stylesheets/chart/monokai.css', rel='stylesheet')
+  body
+    // Fixed navbar
+    #head.navbar.navbar-default.navbar-fixed-top(role='navigation' style="display:none")
+    .container
+      .row-fluid.example
+        #sidebar-code(style="display:none").col-md-4
+          .well.sidebar-nav
+            .nav-header
+              a#icon-resize.glyphicon.glyphicon-resize-full(href='#', onclick='autoResize()')
+              | option
+            - var items = ['蘋果切盤','橘子套裝','北極熊肉','獅子大腿肉','冰淇淋鳳林拼盤'];
+            - var date = ['周一','周二','周三','周四','周五','周六','周日'];
+            textarea#code(name='code')
+              | option = {
+              | tooltip : {
+              | trigger: 'axis'
+              | },
+              | legend: {
+              | data:
+              = JSON.stringify(items)
+              | },
+              | toolbox: {
+              |   show : true,
+              |   feature : {
+              |     mark : {show: true},
+              |     dataView : {show: true, readOnly: false},
+              |     magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+              |     restore : {show: true},
+              |     saveAsImage : {show: true}
+              |   }
+              | },
+              | calculable : true,
+              | xAxis : [
+              |   {
+              |     type : 'category',
+              |     boundaryGap : false,
+              |     data :
+              = JSON.stringify(date)
+              |     }
+              | ],
+              | yAxis : [ { type : 'value' } ],
+              | series :
+              //-  name, type:'line', stack, data:[]
+              | [
+              | {
+              |   name:'蘋果切盤',
+              |   type:'line',
+              |   stack: '总量',
+              |   data:[120, 132, 101, 134, 90, 230, 210]
+              | },
+              | {
+              |   name:'橘子套裝',
+              |   type:'line',
+              |   stack: '总量',
+              |   data:[220, 182, 191, 234, 290, 330, 310]
+              | },
+              | {
+              |   name:'北極熊肉',
+              |   type:'line',
+              |   stack: '总量',
+              |   data:[150, 232, 201, 154, 190, 330, 410]
+              | },
+              | {
+              |   name:'獅子大腿肉',
+              |   type:'line',
+              |   stack: '总量',
+              |   data:[320, 332, 301, 334, 390, 330, 320]
+              | },
+              | {
+              |   name:'冰淇淋鳳林拼盤',
+              |   type:'line',
+              |   stack: '总量',
+              |   data:[820, 932, 901, 934, 1290, 1330, 1320]
+              | }
+              | ]
+              | };
+        #graphic.col-md-8
+          center
+            #main.main(style="width: 80%")
+            div(style="display:none")
+              //- button.btn.btn-sm.btn-success(type='button', onclick='refresh(true)') 刷 新
+              span.text-primary 切换主题
+              select#theme-select
+              span#wrong-message(style='color:red')
+    //- footer#footer
+
+    //- script(src='../asset/js/jquery.min.js')
+    script(type='text/javascript', src='asset/javascripts/chart/echartsHome.js')
+    //- script(src='../asset/js/bootstrap.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+    script(src='asset/javascripts/chart/echartsExample.js')
+
