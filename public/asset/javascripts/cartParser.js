@@ -4,7 +4,7 @@ $(document).ready( function(){
 
   var data = localStorage.getItem("FruitBuyCart") || '';
 
-  console.log('cartParser', data);
+  // console.log('cartParser', data);
 
   $.ajax({
     url: url + 'cart',

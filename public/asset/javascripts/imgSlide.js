@@ -40,7 +40,7 @@ $(document).ready( function(){
   function change(){
     current++;
     if(current >= path.length){ current = 0; }
-    console.log('use', path[current].src);
+    // console.log('use', path[current].src);
     $target.attr('style', 'opacity:0; background-image:url("'+path[current].src+'")');
     $target.parent().attr('href', path[current].url );
     setTimeout( show, 0 );

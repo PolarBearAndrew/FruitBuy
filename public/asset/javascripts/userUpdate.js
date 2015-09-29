@@ -8,7 +8,7 @@ $(document).ready( function(){
 
   $('html, body').on('click', '#register', function(){
 
-    if( $('input[name="newPwd"]').val() !== $('input[name="newPwd2"]').val() || $('input[name="nwePwd2"]').val() === '' ){
+    if( $('input[name="newPwd"]').val() !== $('input[name="newPwd2"]').val() || $('input[name="newPwd2"]').val() === '' ){
       console.log('pwd 錯誤')
       $('#pwdError').transition('fade');
       return false;

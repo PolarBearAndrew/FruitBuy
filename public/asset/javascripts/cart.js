@@ -34,9 +34,10 @@ $(document).ready( function(){
 
   // send
   $('html, body').on('click', '#send', function(){
-    // console.log('submit');
 
-    if( $('#address').val() === ''){
+
+    if( $('#address').val() === '' || $total.val() === 0){
+      alert('缺少必要資訊：請填寫送貨地址或位址');
       return false;
     }
 

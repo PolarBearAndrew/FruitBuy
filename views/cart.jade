@@ -53,9 +53,15 @@ block content
 
   //- dialog
   #checkout.ui.modal
-    .header 訂單送出成功
+    .header.ui.red 缺少必要資訊
     .content
-      a.ui.button.blue(href="/order") 查看訂單狀況
+      p 請填寫送貨地址或位址
+    include footer
+
+  #logout.ui.modal
+    .header.ui.green 鮮•水果歡迎您
+    .content
+      p 謝謝您的光臨, 或請重新登入 :")
     include footer
 
   script(src='/asset/javascripts/cart.js')
