@@ -76,7 +76,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-var port = 8080;
+var port = 80;
 
 app.listen(port, function(){
     console.log('FruitBuy server is listening -> http://localhost:' + port);
