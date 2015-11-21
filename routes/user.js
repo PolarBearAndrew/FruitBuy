@@ -77,8 +77,6 @@ router.post('/', (req, res, next) => {
     //     return res.status(500).send('缺少必要參數', miss.miss);
     // }
 
-    console.log(req.body);
-
     let user = new User({
         email: req.body.email || '',
         phone: req.body.phone || '',
@@ -86,17 +84,15 @@ router.post('/', (req, res, next) => {
         pwd: req.body.pwd || ''
     });
 
-    console.log('user', user);
-
     //db operation
     user.saveAsync()
         .spread( result => {
-            debug('[POST] 新增 User success ->', result);
+            console.log('[POST] 新增 User success ->', result);
             res.json(result);
             return;
         })
         .catch( err => {
-            debug('[POST] 新增 User fail ->', err);
+            console.log('[POST] 新增 User fail ->', err);
             return next(err);
         });
 });
