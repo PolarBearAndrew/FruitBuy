@@ -86,9 +86,7 @@ var config = {
   },
 };
 
-var port = config.port;
-
-console.log('config', config);
+var port = config.dev.port;
 
 app.listen(port, function(){
     console.log('FruitBuy server is listening -> http://localhost:' + port);

@@ -69,7 +69,7 @@ router.get('/', (req, res, next) => {
  */
 router.post('/', (req, res, next) => {
 
-    debug('[POST] 新增 User req.body ->', req.body );
+    // debug('[POST] 新增 User req.body ->', req.body );
 
     // let miss = check( req.body, ['name', 'email', 'pwd', 'phone'] );
     // if(!miss.check){
