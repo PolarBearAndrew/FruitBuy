@@ -76,7 +76,19 @@ app.use(function(err, req, res, next) {
     });
 });
 
-var port = 80;
+
+var config = {
+  ip: 'http://1.172.108.234:80/',
+  port: 80,
+  dev: {
+    ip: 'http://localhost:8080/',
+    port: 8080,
+  },
+};
+
+var port = config.port;
+
+console.log('config', config);
 
 app.listen(port, function(){
     console.log('FruitBuy server is listening -> http://localhost:' + port);
