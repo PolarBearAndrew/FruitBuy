@@ -76,19 +76,12 @@ router.post('/', (req, res, next) => {
     //     debug('[POST] 新增 User miss data ->', miss.miss);
     //     return res.status(500).send('缺少必要參數', miss.miss);
     // }
-    //
-    // let  user = new User({
-    //     email: req.body.email,
-    //     phone: req.body.phone,
-    //     name: req.body.name,
-    //     pwd: req.body.pwd
-    // });
 
     let  user = new User({
-        email: '',
-        phone: '',
-        name: '',
-        pwd: ''
+        email: req.body.email || '',
+        phone: req.body.phone || '',
+        name: req.body.name || '',
+        pwd: req.body.pwd || ''
     });
 
     //db operation
