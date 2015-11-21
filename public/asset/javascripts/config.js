@@ -1,3 +1,3 @@
 var config = {
-  ip: 'http://localhost:8080/'
-}
+  ip: 'http://1.172.108.234:8080/'
+};

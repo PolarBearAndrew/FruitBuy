@@ -1,13 +1,10 @@
-var config = {
-  ip: 'http://localhost:8080/'
-}
 
 $(document).ready(function() {
 
   var url = config.ip;
 
   // edit tables=======================
-  var apiUrl = url + $('#api').text() + '/'
+  var apiUrl = url + $('#api').text() + '/';
 
   var auth = ['員工', '主管'];
   var status = ['上架', '下架'];
@@ -87,7 +84,7 @@ $(document).ready(function() {
     }
 
     //  true false switch
-    onEdit -= 1
+    onEdit -= 1;
     onEdit = onEdit * onEdit;
     $(this).attr('data-onEdit', onEdit);
 
@@ -107,15 +104,15 @@ $(document).ready(function() {
         break;
 
       case 'auth':
-        show = buildSelector( auth, value )
+        show = buildSelector( auth, value );
         break;
 
       case 'status':
-        show = buildSelector( status, value )
+        show = buildSelector( status, value );
         break;
 
       case 'statusO':
-        show = buildSelector( statusO, value )
+        show = buildSelector( statusO, value );
         break;
 
       case 'num':
@@ -123,11 +120,11 @@ $(document).ready(function() {
         break;
 
       case 'text':
-        show = '<input class="form-control" type="text" value="' + value + '"></input>'
+        show = '<input class="form-control" type="text" value="' + value + '"></input>';
         break;
 
       case 'textarea':
-        show = '<textarea rows="4" cols="50" class="form-control">'+value+'</textarea>'
+        show = '<textarea rows="4" cols="50" class="form-control">'+value+'</textarea>';
         break;
 
       case 'img':
@@ -251,15 +248,15 @@ $(document).ready(function() {
           break;
         }
 
-        var td = '<td @attr @schema></td>'
+        var td = '<td @attr @schema></td>';
         var ctrl = $(arr[i]).attr('data-ctrl');
 
-        if(ctrl) td = td.replace(/@attr/g, 'data-ctrl="' + ctrl + '"')
-        else td = td.replace(/@attr/g,'')
+        if(ctrl) td = td.replace(/@attr/g, 'data-ctrl="' + ctrl + '"');
+        else td = td.replace(/@attr/g,'');
 
         var schema = $(arr[i]).attr('data-schema');
-        if(schema) td = td.replace(/@schema/g, 'data-schema="' + schema + '"')
-        else td = td.replace(/@schema/g,'')
+        if(schema) td = td.replace(/@schema/g, 'data-schema="' + schema + '"');
+        else td = td.replace(/@schema/g,'');
 
 
         row += td;
@@ -270,7 +267,7 @@ $(document).ready(function() {
       $( $('.edit')[index] ).click();
 
     }
-    return false
+    return false;
   });
 
   var target = '';
@@ -278,7 +275,7 @@ $(document).ready(function() {
   $('html, body').on('click', '#preDelete', function(){
     target = $(this).attr('data-orderId');
     //確保 del dialog
-    $('#delDialog').modal({})
+    $('#delDialog').modal({});
   });
 
   // 刪除資料
@@ -293,7 +290,7 @@ $(document).ready(function() {
       data: { _id: target },
       success: function( result ){
         $('tr[data-orderId="' + target + '"]').remove();
-        $('#delDialog').modal('toggle')
+        $('#delDialog').modal('toggle');
         // console.log('刪除資料成功', result);
       },
 
