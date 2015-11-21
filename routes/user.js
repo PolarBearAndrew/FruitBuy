@@ -77,12 +77,16 @@ router.post('/', (req, res, next) => {
     //     return res.status(500).send('缺少必要參數', miss.miss);
     // }
 
-    let  user = new User({
+    console.log(req.body);
+
+    let user = new User({
         email: req.body.email || '',
         phone: req.body.phone || '',
         name: req.body.name || '',
         pwd: req.body.pwd || ''
     });
+
+    console.log('user', user);
 
     //db operation
     user.saveAsync()
