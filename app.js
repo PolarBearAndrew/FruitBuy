@@ -78,7 +78,7 @@ app.use(function(err, req, res, next) {
 
 
 var config = {
-  ip: 'http://1.172.108.234:80/',
+  ip: 'http://36.236.240.237/',
   port: 80,
   dev: {
     ip: 'http://localhost:8080/',
@@ -87,6 +87,7 @@ var config = {
 };
 
 var port = config.port;
+// var port = config.dev.port;
 
 app.listen(port, function(){
     console.log('FruitBuy server is listening -> http://localhost:' + port);
