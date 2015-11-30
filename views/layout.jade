@@ -10,6 +10,13 @@ html
     link(rel='stylesheet', href='/asset/stylesheets/basic.css')
     link(rel='stylesheet', href='/asset/stylesheets/menu-rwd.css')
     link(rel='stylesheet', type='text/css', href='/semantic-ui/semantic.css')
+    
+    script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+    //- script(src='/semantic-ui/semantic.js')
+    script(src='/semantic-ui/semantic.min.js')
+    script(src='/asset/javascripts/config.js')
+    script(src="/asset/javascripts/imgSlide.js")
+    script(src="/asset/javascripts/auth.js")
   body
     .ui.left.demo.vertical.inverted.sidebar.labeled.icon.menu
       a(href="/home").item
@@ -56,12 +63,6 @@ html
       br
       br
       include footer
-    script(src='https://code.jquery.com/jquery-2.1.4.min.js')
-    //- script(src='/semantic-ui/semantic.js')
-    script(src='/semantic-ui/semantic.min.js')
-    script(src='/asset/javascripts/config.js')
-    script(src="/asset/javascripts/imgSlide.js")
-    script(src="/asset/javascripts/auth.js")
     //- RWD script
     script(type='text/javascript').
       $(document).ready(function() {
