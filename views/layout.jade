@@ -6,21 +6,10 @@ html
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
-
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='/asset/stylesheets/basic.css')
     link(rel='stylesheet', href='/asset/stylesheets/menu-rwd.css')
     link(rel='stylesheet', type='text/css', href='/semantic-ui/semantic.css')
-
-    script(src='https://code.jquery.com/jquery-2.1.4.min.js')
-    script(src='/semantic-ui/semantic.js')
-
-    script(src='/asset/javascripts/config.js')
-    script(src="/asset/javascripts/imgSlide.js")
-    script(src="/asset/javascripts/auth.js")
-
-    //- script(src='/semantic-ui/semantic.min.js')
-
   body
     .ui.left.demo.vertical.inverted.sidebar.labeled.icon.menu
       a(href="/home").item
@@ -67,6 +56,12 @@ html
       br
       br
       include footer
+    script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+    //- script(src='/semantic-ui/semantic.js')
+    script(src='/semantic-ui/semantic.min.js')
+    script(src='/asset/javascripts/config.js')
+    script(src="/asset/javascripts/imgSlide.js")
+    script(src="/asset/javascripts/auth.js")
     //- RWD script
     script(type='text/javascript').
       $(document).ready(function() {
@@ -106,4 +101,3 @@ html
           $('.ui.sidebar').sidebar('toggle');
         });
       });
-
