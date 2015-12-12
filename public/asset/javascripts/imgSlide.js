@@ -19,7 +19,7 @@ $(document).ready( function(){
         var tmp = {
           src: result[i].img.toString().replace(/<img src="/, '').replace(/">/, '').replace(/\\/, '\/'),
           url: '#'
-        }
+        };
         path.push(tmp);
       }
 
@@ -34,7 +34,7 @@ $(document).ready( function(){
   function hide(){
     $target.animate( { opacity: 0 }, function(){
       change();
-    })
+    });
   }
 
   function change(){
@@ -49,7 +49,7 @@ $(document).ready( function(){
   function show(){
     $target.animate( { opacity: 1 }, function(){
       setTimeout( hide, time);
-    })
+    });
   }
 
 }); //  doc ready end

@@ -11,15 +11,19 @@ router.use(multer({
         return filename;
     },
     onFileUploadStart: function(file) {
-        console.log(file.originalname + ' tis starting ...')
+        console.log(file.originalname + ' tis starting ...');
     },
     onFileUploadComplete: function(file) {
-        console.log(file.fieldname + ' uploaded to  ' + file.path)
+        console.log(file.fieldname + ' uploaded to  ' + file.path);
         done = true;
     }
 }));
 
 router.post('/new', function(req, res) {
+
+    if(!req.files){
+      return res.status(204).end();
+    }
 
     console.log('upload img');
 

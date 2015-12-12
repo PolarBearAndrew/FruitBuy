@@ -128,7 +128,7 @@ $(document).ready(function() {
         break;
 
       case 'img':
-        show = '<form id="uploadForm" enctype="multipart/form-data" action="/img/new" method="post"> <input type="file" name="userPhoto"/> <input type="submit" value="重新上傳" name="submit" class="btn btn-success btn-xs "/> </form>';
+        show = '<form id="uploadForm" enctype="multipart/form-data" action="' + url + 'img/new" method="post"> <input type="file" name="userPhoto"/> <input type="submit" value="重新上傳" name="submit" class="btn btn-success btn-xs "/> </form>';
         break;
     }
     return show;
